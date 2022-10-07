@@ -1,4 +1,4 @@
-﻿using IdentityManagement.Models;
+﻿using IdentityCore.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

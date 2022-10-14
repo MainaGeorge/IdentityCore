@@ -1,13 +1,21 @@
+using IdentityCore.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace IdentityCore
 {
     public static class Program
     {
         public static void Main(string[] args)
         {
+            IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ApplicationDbContext>(o =>
+            {
+                o.UseSqlServer(configuration.GetConnectionString("Default"));
+            });
 
             var app = builder.Build();
 
